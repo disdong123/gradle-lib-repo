@@ -1,0 +1,32 @@
+name: lib-common
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "lib-common/**"
+    branches:
+      - "main"
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: 'gradle'
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+      - name: Build with gradle and publish to GitHub Packages
+        env:
+          DISDONG_USERNAME: ${{ secrets.DISDONG_USERNAME }}
+          DISDONG_TOKEN: ${{ secrets.DISDONG_TOKEN }}
+        run: ./gradlew clean build && ./gradlew :lib-common:publish
