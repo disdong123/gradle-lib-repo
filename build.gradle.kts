@@ -2,6 +2,7 @@
 plugins {
     `maven-publish`
     alias(libs.plugins.kotlin.jvm)
+    alias(libs.plugins.ktlint)
 }
 
 allprojects {
@@ -19,6 +20,7 @@ subprojects {
 
     apply(plugin = "maven-publish")
     apply(plugin = "org.jetbrains.kotlin.jvm")
+    apply(plugin = "org.jlleitschuh.gradle.ktlint")
 
     dependencies {
         implementation(libs.kotlin.reflect)
@@ -48,7 +50,3 @@ subprojects {
         useJUnitPlatform()
     }
 }
-
-
-
-

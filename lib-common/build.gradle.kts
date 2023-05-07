@@ -4,9 +4,9 @@ plugins {
 
 publishing {
     publications {
-        register<MavenPublication>("ytdlCoreKt") {
+        register<MavenPublication>("libCommon") {
             group = "kr.disdong"
-            artifactId = "ytdl-core-kt"
+            artifactId = "lib-common"
             version = "0.0.1"
             from(components["java"])
         }

@@ -2,7 +2,7 @@ rootProject.name = "gradle-lib-repo"
 
 include(
     "lib-template",
-    "ytdl-core",
+    "lib-common",
 )
 
 enableFeaturePreview("VERSION_CATALOGS")
